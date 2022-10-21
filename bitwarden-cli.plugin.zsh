@@ -17,7 +17,7 @@ function .copy() {
 function .bw_get_id() {
   local mode=$1
   jq --unbuffered -r '.[] | .name + ";" + .login.username + ";" + .id' <(bw list items) \
-    | sk --no-clear-if-empty --prompt="bw ${mode}> " \
+    | sk --preview-window=:hidden --prompt="bw ${mode}> " \
     | cut -f3 -d ";"
 }
 
