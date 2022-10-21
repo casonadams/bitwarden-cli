@@ -2,6 +2,14 @@
 
 A zsh Bitwarden CLI fuzzy finder using `skim`
 
+## requirements
+
+- TODO add links
+
+`bw`
+`jq`
+`sk`
+
 ## setup
 
 - Login
