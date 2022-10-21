@@ -1,6 +1,6 @@
 # bitwarden-cli
 
-Bitwarden CLI fuzzy finder
+A zsh Bitwarden CLI fuzzy finder using `skim`
 
 ## setup
 
