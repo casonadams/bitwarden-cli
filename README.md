@@ -4,16 +4,35 @@ A zsh Bitwarden CLI fuzzy finder using `skim`
 
 ## requirements
 
-- TODO add links
+- [bw](https://bitwarden.com/download/) might need to `chmod +x bw` and move add to $PATH
+- [jq](https://stedolan.github.io/jq/)
+- [sk](https://github.com/lotabout/skim#package-managers)
 
-`bw`
-`jq`
-`sk`
+*Note* you can use `fzf` just createt an `alias sk=fzf`
 
 ## setup
 
-- TODO add install instructions
-- Login
+### zinit
+
+```~/.zshrc
+zinit wait lucid for \
+  casonadams/bitwarden-cli \
+  ;
+```
+
+### oh my zsh
+
+```sh
+ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom/" git clone --depth=1 "https://github.com/casonadams/bitwarden-cli.git" "${ZSH_CUSTOM}/plugins/bitwarden-cli"
+```
+
+```~/.zshrc
+plugins+=(
+  bitwarden-cli
+)
+```
+
+- Login only needed once
 
 ```sh
 echo "export BW_SESSION=$(bw unlock --raw)" >> ~/.zprofile
@@ -22,12 +41,11 @@ exec zsh
 
 ### environment (optional)
 
-```sh
-BITWARDEN_GET_PASSWORD_KEY
-BITWARDEN_GET_TOTP_KEY
-```
+- BW_PASSWORD_KEY (default `^[p`)
+- BW_TOTP_KEY     (default `^[t`)
+- BW_AUTO_COPY    (default `true`)
 
-## usage
+## usage (defaults)
 
 | Shortcut | Description |
 |----------|-------------|

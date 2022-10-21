@@ -1,6 +1,36 @@
-# According to the standard:
-# https://github.com/zdharma/Zsh-100-Commits-Club/blob/master/Zsh-Plugin-Standard.adoc
-0="${ZERO:-${${0:#$ZSH_ARGZERO}:-${(%):-%N}}}"
-0="${${(M)0:#/*}:-$PWD/$0}"
+local BW_PASSWORD_KEY="${BW_PASSWORD_KEY:-^[p}"
+local BW_TOTP_KEY="${BW_TOTP_KEY:-^[t}"
+local BW_AUTO_COPY="${BW_AUTO_COPY:-true}"
 
-source ${0:h}/bitwarden-cli.zsh
+function .copy() {
+  local result=$1
+
+  if $BW_AUTO_COPY; then
+    printf "%s" $result | pbcopy
+    zle accept-line
+  else
+    read -s "reply?$result" < /dev/tty
+    zle reset-prompt
+  fi
+}
+
+function .bw_get_id() {
+  local mode=$1
+  jq --unbuffered -r '.[] | .name + ";" + .login.username + ";" + .id' <(bw list items) \
+    | sk --no-clear-if-empty --prompt="bw ${mode}> " \
+    | cut -f3 -d ";"
+}
+
+function bw_get_password() {
+  .copy $(bw get password "$(.bw_get_id password)")
+}
+
+function bw_get_totp() {
+  .copy $(bw get totp "$(.bw_get_id totp)")
+}
+
+zle -N bw_get_password
+zle -N bw_get_totp
+
+bindkey "$BW_PASSWORD_KEY" bw_get_password
+bindkey "$BW_TOTP_KEY" bw_get_totp
