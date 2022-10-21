@@ -32,11 +32,23 @@ plugins+=(
 )
 ```
 
-- Login only needed once
+### login
+
+This should only need to be run once. And there might
+be better ways to `login` and `logout` that are more
+secure. This is just an example of what is needed
+to get this plugin to work
 
 ```sh
 echo "export BW_SESSION=$(bw unlock --raw)" >> ~/.zprofile
 exec zsh
+```
+
+### linux alias
+
+```~/.zshrc
+alias pbcopy='xsel -i --clipboard'
+alias pbpaste='xsel -o --clipboard'
 ```
 
 ### environment (optional)
@@ -51,10 +63,3 @@ exec zsh
 |----------|-------------|
 |`alt + p` | password    |
 |`alt + t` | totp        |
-
-## linux alias
-
-```~/.zshrc
-alias pbcopy='xsel -i --clipboard'
-alias pbpaste='xsel -o --clipboard'
-```
