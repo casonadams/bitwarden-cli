@@ -51,3 +51,10 @@ exec zsh
 |----------|-------------|
 |`alt + p` | password    |
 |`alt + t` | totp        |
+
+## linux alias
+
+```~/.zshrc
+alias pbcopy='xsel -i --clipboard'
+alias pbpaste='xsel -o --clipboard'
+```
