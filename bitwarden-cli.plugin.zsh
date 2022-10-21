@@ -16,9 +16,9 @@ function .copy() {
 
 function .bw_get_id() {
   local mode=$1
-  jq -r -c '.[] | .id + " │ [" + .name + "](" + .login.username + ")"' <(bw list items) \
+  jq -r -c '.[] | "[" + .name + "](" + .login.username + ")  │  " + .id' <(bw list items) \
     | sk --preview-window=:nohidden --preview-window=right:0% --prompt="bw ${mode}> " \
-    | cut -f1 -d "│" \
+    | cut -f2 -d "│" \
     | tr -d " "
 }
 
