@@ -4,7 +4,7 @@ A zsh Bitwarden CLI fuzzy finder using `skim`
 
 ## requirements
 
-- [bw](https://bitwarden.com/download/) might need to `chmod +x bw` and move add to $PATH
+- [bw](https://bitwarden.com/download/)
 - [jq](https://stedolan.github.io/jq/)
 - [sk](https://github.com/lotabout/skim#package-managers)
 
