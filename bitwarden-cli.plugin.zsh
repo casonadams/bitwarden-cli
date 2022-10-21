@@ -16,9 +16,9 @@ function .copy() {
 
 function .bw_get_id() {
   local mode=$1
-  jq -r -c '.[] | {ENTRY: .name, USERNAME: .login.username, ID: .id}' <(bw list items) \
+  jq -r -c '.[] | .name + " │ " + .login.username + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│" + .id' <(bw list items) \
     | sk --preview-window=:nohidden --preview-window=right:0% --prompt="bw ${mode}> " \
-    | jq -r '.ID'
+    | cut -f3 -d "│"
 }
 
 function bw_get_password() {
