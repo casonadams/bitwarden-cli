@@ -16,9 +16,10 @@ function .copy() {
 
 function .bw_get_id() {
   local mode=$1
-  jq -r -c '.[] | .name + " │ " + .login.username + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t│" + .id' <(bw list items) \
+  jq -r -c '.[] | .id + " │ [" + .name + "](" + .login.username + ")"' <(bw list items) \
     | sk --preview-window=:nohidden --preview-window=right:0% --prompt="bw ${mode}> " \
-    | cut -f3 -d "│"
+    | cut -f1 -d "│" \
+    | tr -d " "
 }
 
 function bw_get_password() {
