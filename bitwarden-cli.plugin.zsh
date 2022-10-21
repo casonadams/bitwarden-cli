@@ -32,5 +32,5 @@ function bw_get_totp() {
 zle -N bw_get_password
 zle -N bw_get_totp
 
-bindkey "$BW_PASSWORD_KEY" bw_get_password
-bindkey "$BW_TOTP_KEY" bw_get_totp
+bindkey "${BW_PASSWORD_KEY}" bw_get_password
+bindkey "${BW_TOTP_KEY}" bw_get_totp
