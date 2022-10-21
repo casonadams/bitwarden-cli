@@ -8,7 +8,7 @@ A zsh Bitwarden CLI fuzzy finder using `skim`
 - [jq](https://stedolan.github.io/jq/)
 - [sk](https://github.com/lotabout/skim#package-managers)
 
-*Note* you can use `fzf` just createt an `alias sk=fzf`
+*Note* you can use `fzf` just create an `alias sk=fzf`
 
 ## setup
 
