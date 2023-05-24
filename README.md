@@ -49,3 +49,12 @@ bw login
 |----------|-------------|
 |`alt + p` | password    |
 |`alt + t` | totp        |
+
+| Commands        | Description                            |
+|-----------------|----------------------------------------|
+|`bw_pass`        | password                               |
+|`bw_pass otp`    | totp                                   |
+|`bw_pass -c`     | password to clipboard                  |
+|`bw_pass otp -c` | totp to clipboard                      |
+|`bw_pass list`   | list passwords names                   |
+|`bw_pass name`   | password (name should come from list)  |
