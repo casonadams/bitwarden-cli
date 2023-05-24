@@ -57,4 +57,4 @@ bw login
 |`bw_pass -c`     | password to clipboard                  |
 |`bw_pass otp -c` | totp to clipboard                      |
 |`bw_pass list`   | list password names                    |
-|`bw_pass name`   | password (name should come from list)  |
+|`bw_pass <name>` | password (name should come from list)  |
